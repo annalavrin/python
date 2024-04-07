@@ -16,6 +16,22 @@ class Airline:
     def read_fields(self):
         return self.destination, self.flight_number, self.aircraft_type, self.departure_time, self.weekdays
 
+    @staticmethod
+    def get_flights_by_destination(flights, destination):
+        flight_list = []
+        for flight in flights:
+            if flight.destination == destination:
+                flight_list.append(flight)
+        return flight_list
+
+    @classmethod
+    def get_flights_by_weekday(cls, flights, weekday):
+        flight_list = []
+        for flight in flights:
+            if weekday in flight.weekdays:
+                flight_list.append(flight)
+        return flight_list
+
 # Создание списка объектов
 flights = []
 flights.append(Airline("London", "BA123", "Boeing 747", "10:00", ["Monday", "Wednesday", "Friday"]))
